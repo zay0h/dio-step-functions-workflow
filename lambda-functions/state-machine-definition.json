@@ -1,0 +1,83 @@
+{
+  "Comment": "Workflow de Orquestração de Pedidos de Serviço - Desafio DIO Step Functions",
+  "StartAt": "ValidarDados",
+  "States": {
+    "ValidarDados": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:SUA_REGIAO:SUA_CONTA_ID:function:validador-lambda",
+        "Payload.$": "$"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ClientExecutionTimeout",
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "TratarErroGrave"
+        }
+      ],
+      "Next": "VerificarStatus"
+    },
+    "VerificarStatus": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.status",
+          "StringEquals": "APROVADO",
+          "Next": "ProcessarPedido"
+        }
+      ],
+      "Default": "NotificarErro"
+    },
+    "ProcessarPedido": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:SUA_REGIAO:SUA_CONTA_ID:function:processador-lambda",
+        "Payload.$": "$"
+      },
+      "Next": "Sucesso"
+    },
+    "NotificarErro": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Parameters": {
+        "TopicArn": "arn:aws:sns:SUA_REGIAO:SUA_CONTA_ID:TopicoNotificacaoDeErro",
+        "Message": {
+          "Subject": "ERRO: Pedido Rejeitado no Workflow Step Functions",
+          "Body.$": "$.error_message" 
+        }
+      },
+      "Next": "Falha"
+    },
+    "TratarErroGrave": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Parameters": {
+        "TopicArn": "arn:aws:sns:SUA_REGIAO:SUA_CONTA_ID:TopicoNotificacaoDeErroGrave",
+        "Message": {
+          "Subject": "ERRO GRAVE: Falha Irrecuperável no Workflow",
+          "Body.$": "$.Cause"
+        }
+      },
+      "Next": "Falha"
+    },
+    "Sucesso": {
+      "Type": "Succeed"
+    },
+    "Falha": {
+      "Type": "Fail"
+    }
+  }
+}
