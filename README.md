@@ -71,6 +71,6 @@ O repositório está organizado para fornecer o código-fonte e a documentação
 | Caminho | Conteúdo | Observações |
 | :--- | :--- | :--- |
 | `lambda-functions/state-machine-definition.json` | A definição completa da State Machine (ASL). | Arquivo essencial para recriar o workflow. |
-| `lambda-functions/` | Código-fonte das funções AWS Lambda. | Contém os arquivos `validador.py` e `processador.py`. |
+| lambda-functions/lambda-functions/lambda-functions | Código-fonte das funções AWS Lambda. | Contém os arquivos `validador.py` e `processador.py`. |
 | `images/` | Diagramas do Draw.io e capturas de tela. | Inclui o diagrama de arquitetura e a captura de tela de uma execução bem-sucedida. |
 | `README.md` | Documentação detalhada do projeto e dos insights. | O material de apoio completo. |
