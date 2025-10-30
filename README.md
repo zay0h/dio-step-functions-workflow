@@ -22,7 +22,7 @@ O workflow implementado simula um processo de **validação de pedidos de servi�
 
 O fluxo é definido por uma sequência lógica de tarefas e decisões, conforme ilustrado no diagrama da máquina de estados:
 
-![Diagrama da Máquina de Estados do Step Functions](images/Diagrama da Maquina de Estados Validacao de Pedidos de Servico.jpg)
+![Diagrama da Máquina de Estados do Step Functions](images/diagrama-workflow.jpg)
 
 ### Descrição do Fluxo Lógico
 
