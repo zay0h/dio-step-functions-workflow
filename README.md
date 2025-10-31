@@ -1,6 +1,6 @@
-# 🚀 Desafio DIO: Orquestração Serverless com AWS Step Functions
+# Desafio DIO: Orquestração Serverless com AWS Step Functions
 
-## 💡 Visão Geral e Contexto
+## Visão Geral e Contexto
 
 Este repositório documenta a entrega do desafio de **Workflows Automatizados com AWS Step Functions** da DIO.
 
@@ -14,7 +14,7 @@ O projeto demonstra a implementação de uma **máquina de estados (State Machin
 
 ---
 
-## 📐 1. Arquitetura e Fluxo de Trabalho
+## 1. Arquitetura e Fluxo de Trabalho
 
 O workflow implementado simula um processo de **validação de pedidos de serviço** antes do processamento final, garantindo que apenas dados válidos avancem.
 
@@ -36,7 +36,7 @@ O fluxo é definido por uma sequência lógica de tarefas e decisões, conforme 
 
 ---
 
-## 🛠️ 2. Implementação Técnica e Conceitos Aplicados
+## 2. Implementação Técnica e Conceitos Aplicados
 
 O projeto utilizou conceitos essenciais do Step Functions para garantir um fluxo de trabalho eficiente e observável.
 
@@ -53,7 +53,7 @@ O projeto utilizou conceitos essenciais do Step Functions para garantir um fluxo
 
 ---
 
-## 🧠 3. Insights e Experiências Adquiridas (O Destaque)
+## 3. Insights e Experiências Adquiridas (O Destaque)
 
 O desafio consolidou o entendimento sobre a importância da orquestração na arquitetura Serverless.
 
@@ -64,7 +64,7 @@ O desafio consolidou o entendimento sobre a importância da orquestração na ar
 
 ---
 
-## 📂 4. Estrutura do Repositório
+## 4. Estrutura do Repositório
 
 O repositório está organizado para fornecer o código-fonte e a documentação de apoio:
 
