@@ -6,7 +6,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::lambda:invoke",
       "Parameters": {
-        "FunctionName": "arn:aws:lambda:us-east-1:4986-2847-4469:function:validador-lambda",
+        "FunctionName": "arn:aws:lambda:us-east-1:4967-2867-4467:function:validador-lambda",
         "Payload.$": "$"
       },
       "Retry": [
@@ -44,7 +44,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::lambda:invoke",
       "Parameters": {
-        "FunctionName": "arn:aws:lambda:lambda:us-east-1:4986-2847-4469:function:processador-lambda",
+        "FunctionName": "arn:aws:lambda:lambda:us-east-1:4967-2867-4467:function:processador-lambda",
         "Payload.$": "$"
       },
       "Next": "Sucesso"
@@ -53,7 +53,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::sns:publish",
       "Parameters": {
-        "TopicArn": "arn:aws:sns:lambda:us-east-1:4986-2847-4469:TopicoNotificacaoDeErro",
+        "TopicArn": "arn:aws:sns:lambda:us-east-1:4967-2867-4467:TopicoNotificacaoDeErro",
         "Message": {
           "Subject": "ERRO: Pedido Rejeitado no Workflow Step Functions",
           "Body.$": "$.error_message" 
@@ -65,7 +65,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::sns:publish",
       "Parameters": {
-        "TopicArn": "arn:aws:sns:lambda:us-east-1:4986-2847-4469:TopicoNotificacaoDeErroGrave",
+        "TopicArn": "arn:aws:sns:lambda:us-east-1:4967-2867-4467:TopicoNotificacaoDeErroGrave",
         "Message": {
           "Subject": "ERRO GRAVE: Falha Irrecuperável no Workflow",
           "Body.$": "$.Cause"
